@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.coco</groupId>
+  <groupId>io.github.dong4j</groupId>
   <artifactId>coco-supreme</artifactId>
   <version>${revision}</version>
   <packaging>pom</packaging>
   <name>Coco Supreme</name>
   <description>Coco parent pom, managing plugins and dependencies for coco projects</description>
 
-  <url>http://github.con/dong4j/coco-supreme</url>
+  <url>https://github.com/dong4j/coco-supreme</url>
 
   <developers>
     <developer>
@@ -25,10 +25,10 @@
 
   <scm>
     <!-- mvn scm:checkin -Dmessage=xxx : push 代码; mvn scm:update : 更新代码 -->
-    <url>https://github.con/dong4j/coco-supreme</url>
+    <url>https://github.com/dong4j/coco-supreme</url>
     <!-- scm:[git/svn]:地址 -->
-    <connection>scm:git:git://github.con/dong4j/coco-supreme.git</connection>
-    <developerConnection>scm:git:ssh://github.con/dong4j/coco-supreme.git</developerConnection>
+    <connection>scm:git:git://github.com/dong4j/coco-supreme.git</connection>
+    <developerConnection>scm:git:ssh://github.com/dong4j/coco-supreme.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
