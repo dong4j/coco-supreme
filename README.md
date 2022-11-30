@@ -48,7 +48,7 @@ the [tags on this repository](https://github.com/dong4j/coco-supreme/tags).
 
 ## Authors
 
-* **dong4j** - *Initial work* - [PurpleBooth](https://github.com/dong4j)
+* **dong4j** - *Initial work* - [dong4j](https://github.com/dong4j)
 
 See also the list of [contributors](https://github.com/dong4j/coco-supreme/contributors) who participated in this project.
 
