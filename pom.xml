@@ -8,61 +8,45 @@
   <version>${revision}</version>
   <packaging>pom</packaging>
   <name>Coco Supreme</name>
+  <url>https://github.com/dong4j/coco-supreme</url>
   <description>Coco parent pom, managing plugins and dependencies for coco projects</description>
 
-  <url>https://github.com/dong4j/coco-supreme</url>
-
-  <developers>
-    <developer>
-      <id>dong4j</id>
-      <name>dong4j</name>
-      <email>dong4j@gmail.com</email>
-      <roles>
-        <role>designer</role>
-      </roles>
-    </developer>
-  </developers>
-
-  <scm>
-    <!-- mvn scm:checkin -Dmessage=xxx : push 代码; mvn scm:update : 更新代码 -->
-    <url>https://github.com/dong4j/coco-supreme</url>
-    <!-- scm:[git/svn]:地址 -->
-    <connection>scm:git:git://github.com/dong4j/coco-supreme.git</connection>
-    <developerConnection>scm:git:ssh://github.com/dong4j/coco-supreme.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
-
   <properties>
-    <revision>2023.1.1-SNAPSHOT</revision>
+    <!--endregion-->
+    <annotations.version>23.0.0</annotations.version>
+    <!--endregion-->
     <!--region Global configuration-->
     <!-- 全局设置 jdk 版本 -->
     <java.version>17</java.version>
-    <maven.compile.source>${java.version}</maven.compile.source>
-    <maven.compile.target>${java.version}</maven.compile.target>
-    <!-- 关闭 API 过时警告 -->
-    <maven.compile.deprecation>off</maven.compile.deprecation>
     <project.encoding>UTF-8</project.encoding>
-    <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
-    <!--endregion-->
-
     <!--region maven plugin version-->
     <flatten-maven-plugin.version>1.2.4</flatten-maven-plugin.version>
-    <maven-compiler-plugin>3.10.1</maven-compiler-plugin>
-    <!--endregion-->
-
-    <annotations.version>23.0.0</annotations.version>
-    <lombok.version>1.18.22</lombok.version>
     <junit.version>5.6.0</junit.version>
+    <lombok.version>1.18.22</lombok.version>
+    <maven-compiler-plugin>3.10.1</maven-compiler-plugin>
+    <!-- 关闭 API 过时警告 -->
+    <maven.compile.deprecation>off</maven.compile.deprecation>
+    <maven.compile.source>${java.version}</maven.compile.source>
+    <maven.compile.target>${java.version}</maven.compile.target>
+    <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
+    <revision>2023.1.1-SNAPSHOT</revision>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+      <!-- idea 提供的用于编译时检查 null 的工具包 (在 package 阶段排除) -->
+      <dependency>
+        <groupId>org.jetbrains</groupId>
+        <artifactId>annotations</artifactId>
+        <version>${annotations.version}</version>
+        <scope>provided</scope>
+      </dependency>
       <dependency>
         <groupId>org.junit</groupId>
         <artifactId>junit-bom</artifactId>
         <version>${junit.version}</version>
-        <type>pom</type>
         <scope>import</scope>
+        <type>pom</type>
       </dependency>
       <!-- lombok 插件, 简化代码 (在 package 阶段排除) -->
       <dependency>
@@ -71,55 +55,65 @@
         <version>${lombok.version}</version>
         <scope>provided</scope>
       </dependency>
-      <!-- idea 提供的用于编译时检查 null 的工具包 (在 package 阶段排除) -->
-      <dependency>
-        <groupId>org.jetbrains</groupId>
-        <artifactId>annotations</artifactId>
-        <version>${annotations.version}</version>
-        <scope>provided</scope>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${maven-compiler-plugin}</version>
+        <configuration>
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+        </configuration>
+        <inherited>true</inherited>
+      </plugin>
       <!-- 处理 revision 版本问题 -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>flatten-maven-plugin</artifactId>
         <version>${flatten-maven-plugin.version}</version>
         <configuration>
-          <updatePomFile>true</updatePomFile>
           <flattenMode>resolveCiFriendliesOnly</flattenMode>
+          <updatePomFile>true</updatePomFile>
         </configuration>
         <executions>
           <execution>
-            <id>flatten</id>
-            <phase>process-resources</phase>
             <goals>
               <goal>flatten</goal>
             </goals>
+            <id>flatten</id>
+            <phase>process-resources</phase>
           </execution>
           <execution>
-            <id>flatten.clean</id>
-            <phase>clean</phase>
             <goals>
               <goal>clean</goal>
             </goals>
+            <id>flatten.clean</id>
+            <phase>clean</phase>
           </execution>
         </executions>
       </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven-compiler-plugin}</version>
-        <inherited>true</inherited>
-        <configuration>
-          <source>${java.version}</source>
-          <target>${java.version}</target>
-        </configuration>
-      </plugin>
     </plugins>
   </build>
+  <developers>
+    <developer>
+      <name>dong4j</name>
+      <email>dong4j@gmail.com</email>
+      <id>dong4j</id>
+      <roles>
+        <role>designer</role>
+      </roles>
+    </developer>
+  </developers>
+  <scm>
+    <!-- mvn scm:checkin -Dmessage=xxx : push 代码; mvn scm:update : 更新代码 -->
+    <url>https://github.com/dong4j/coco-supreme</url>
+    <!-- scm:[git/svn]: 地址 -->
+    <connection>scm:git:git://github.com/dong4j/coco-supreme.git</connection>
+    <developerConnection>scm:git:ssh://github.com/dong4j/coco-supreme.git</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
 </project>
