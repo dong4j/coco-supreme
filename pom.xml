@@ -18,10 +18,8 @@
     <project.encoding>UTF-8</project.encoding>
     <!--endregion-->
     <annotations.version>23.0.0</annotations.version>
-    <!--region maven plugin version-->
-    <flatten-maven-plugin.version>1.2.4</flatten-maven-plugin.version>
     <junit.version>5.6.0</junit.version>
-    <lombok.version>1.18.22</lombok.version>
+    <lombok.version>1.18.24</lombok.version>
     <maven-compiler-plugin>3.10.1</maven-compiler-plugin>
     <!-- 关闭 API 过时警告 -->
     <maven.compile.deprecation>off</maven.compile.deprecation>
@@ -29,6 +27,21 @@
     <maven.compile.target>${java.version}</maven.compile.target>
     <project.build.sourceEncoding>${project.encoding}</project.build.sourceEncoding>
     <revision>2023.1.1-SNAPSHOT</revision>
+
+    <!--region maven plugin version -->
+    <flatten-maven-plugin.version>1.2.4</flatten-maven-plugin.version>
+    <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
+    <maven-pmd-plugin.version>3.13.0</maven-pmd-plugin.version>
+    <maven-assembly-plugin.version>3.3.0</maven-assembly-plugin.version>
+    <maven-enforcer-plugin.version>3.1.0</maven-enforcer-plugin.version>
+    <maven-install-plugin.version>2.5.2</maven-install-plugin.version>
+    <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+    <maven-javadoc-plugin.version>3.3.1</maven-javadoc-plugin.version>
+    <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+    <p3c-pmd.version>2.0.1</p3c-pmd.version>
+    <git-commit-id-plugin.version>2.2.6</git-commit-id-plugin.version>
+    <jacoco-maven-plugin.version>0.8.3</jacoco-maven-plugin.version>
+    <!--endregion-->
   </properties>
 
   <dependencyManagement>
